@@ -1,0 +1,14 @@
+{
+  "name": "neo-mofox-ask-ai-chat",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Headless Playwright worker for the Neo MoFox ask-ai-chat plugin (Google Lens reverse search + web AI reverse proxy)",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "playwright-core": "^1.62.1",
+    "rebrowser-playwright": "^1.52.0"
+  }
+}
