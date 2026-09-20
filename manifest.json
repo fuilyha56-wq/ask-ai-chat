@@ -1,0 +1,35 @@
+{
+  "name": "ask-ai-chat",
+  "display_name": "AI 网页反代与识图搜索",
+  "version": "1.1.0",
+  "description": "无头浏览器插件：Google 以图搜图；豆包/DeepSeek/Gemini 网页 AI 反代；模型/档位/深度思考/联网能力探测、标题历史续聊、命名登录 profile 与风险状态管理；框架图片识别插件优先、VLM 失败回落",
+  "author": "MoFox Team",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "plugins": [],
+    "components": []
+  },
+  "python_dependencies": ["httpx"],
+  "dependencies_required": true,
+  "include": [
+    {"component_type": "service", "component_name": "web_agent", "dependencies": [], "enabled": true},
+    {"component_type": "tool", "component_name": "web_image_search", "dependencies": ["ask-ai-chat:service:web_agent"], "enabled": true},
+    {"component_type": "tool", "component_name": "web_ai_chat", "dependencies": ["ask-ai-chat:service:web_agent"], "enabled": true},
+    {"component_type": "tool", "component_name": "web_file_download", "dependencies": ["ask-ai-chat:service:web_agent"], "enabled": true},
+    {"component_type": "tool", "component_name": "web_ai_session", "dependencies": ["ask-ai-chat:service:web_agent"], "enabled": true},
+    {"component_type": "event_handler", "component_name": "image_auto_recognize", "dependencies": ["ask-ai-chat:service:web_agent"], "enabled": true},
+    {"component_type": "event_handler", "component_name": "lens_media_recognize", "dependencies": ["ask-ai-chat:service:web_agent"], "enabled": true},
+    {"component_type": "config", "component_name": "config", "dependencies": [], "enabled": true}
+  ],
+  "entry_point": "plugin.py",
+  "api_version": {
+    "adapter_api": "1.0.0",
+    "send_api": "1.0.0",
+    "service_api": "1.0.0",
+    "event_api": "1.1.0",
+    "prompt_api": "1.0.0"
+  },
+  "min_core_version": "1.0.0",
+  "categories": ["tool"],
+  "tags": ["browser", "headless", "google-lens", "image-search", "doubao", "deepseek", "gemini", "reverse-proxy", "vision"]
+}
